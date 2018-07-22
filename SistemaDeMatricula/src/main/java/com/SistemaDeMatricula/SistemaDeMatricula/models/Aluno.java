@@ -16,9 +16,10 @@ public class Aluno {
 	@Column(nullable = false)
 	private String cpf;
 	@Column(nullable = false)
-	private String senha;
+	private String email;
 	@Column(nullable = false)
 	private String dataNascimento;
+	
 	public Long getMatricula() {
 		return matricula;
 	}
@@ -38,10 +39,10 @@ public class Aluno {
 		this.cpf = cpf;
 	}
 	public String getSenha() {
-		return senha;
+		return email;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSenha(String email) {
+		this.email = email;
 	}
 	public String getDataNascimento() {
 		return dataNascimento;

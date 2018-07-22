@@ -31,16 +31,17 @@ public class DisciplinaController {
 		return new ResponseEntity<>(disciplinas, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/api/get/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Disciplina> buscaId(@PathVariable("id") Integer id) throws Exception {
+		return new ResponseEntity<>(disciplinaService.BuscaId(id), HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/api/put/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Disciplina> setDisciplina(@PathVariable("id") int id, @RequestBody Disciplina disciplina) throws Exception {
 		Disciplina disciplinaAlterada = disciplinaService.update(disciplina, id);
 		return new ResponseEntity<>(disciplinaAlterada,HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/api/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Disciplina> buscaId(@PathVariable("id") Integer id) throws Exception {
-		return new ResponseEntity<>(disciplinaService.BuscaId(id), HttpStatus.OK);
-	}
 	@RequestMapping(value = "/api/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Disciplina> deleteDisciplina(@PathVariable("id") Integer id) throws Exception {
 		return new ResponseEntity<>(disciplinaService.excluir(id), HttpStatus.OK);

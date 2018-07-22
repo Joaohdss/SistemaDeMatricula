@@ -14,7 +14,6 @@ public class DisciplinaService {
 	
 	@Autowired
 	DisciplinaRepository disciplinaRepository;
-	
 
 	public Disciplina add(Disciplina disciplina) {
 		return disciplinaRepository.save(disciplina);
@@ -23,6 +22,7 @@ public class DisciplinaService {
 	public Collection<Disciplina> buscarTodos() {
 		return disciplinaRepository.findAll();
 	}
+	
 	public Disciplina BuscaId(Integer id) throws Exception {
 		Optional<Disciplina> opDisciplina = disciplinaRepository.findById(id);
 		

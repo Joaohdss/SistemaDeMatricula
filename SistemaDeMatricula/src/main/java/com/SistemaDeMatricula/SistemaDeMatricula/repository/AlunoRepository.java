@@ -7,5 +7,5 @@ import com.SistemaDeMatricula.SistemaDeMatricula.models.Aluno;
 
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Long>{
-
+	
 }
