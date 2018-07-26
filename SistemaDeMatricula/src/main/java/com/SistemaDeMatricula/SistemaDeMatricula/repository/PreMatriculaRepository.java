@@ -1,5 +1,5 @@
 package com.SistemaDeMatricula.SistemaDeMatricula.repository;
 
-public class PreMatriculaRepository {
+public interface PreMatriculaRepository {
 
 }
