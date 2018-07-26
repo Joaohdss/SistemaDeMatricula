@@ -31,18 +31,22 @@ public class AlunoController {
 		return new ResponseEntity<>(alunos, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/api/{matricula}", method = RequestMethod.GET)
-	public ResponseEntity<Aluno> buscaEmail(@PathVariable("matricula") Long matricula) throws Exception {
+	@RequestMapping(value = "/api/aluno/matricula/{matricula}", method = RequestMethod.GET)
+	public ResponseEntity<Aluno> buscaMatricula(@PathVariable("matricula") Long matricula) throws Exception {
 		return new ResponseEntity<>(alunoService.BuscaId(matricula), HttpStatus.OK);
 	}
+	@RequestMapping(value = "/api/aluno/get/email/{email}", method = RequestMethod.GET)
+	public ResponseEntity<Aluno> buscaEmail(@PathVariable("email") String email){
+		return new ResponseEntity<>(alunoService.buscaEmail(email), HttpStatus.OK);
+	}
 	
-	@RequestMapping(value = "/api/put/{matricula}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/api/aluno/put/{matricula}", method = RequestMethod.PUT)
 	public ResponseEntity<Aluno> setAluno(@PathVariable("matricula") Long matricula, @RequestBody Aluno aluno) throws Exception {
 		Aluno alunoAlterado = alunoService.update(aluno, matricula);
 		return new ResponseEntity<>(alunoAlterado,HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/api/delete/{matricula}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/api/aluno/delete/{matricula}", method = RequestMethod.DELETE)
 	public ResponseEntity<Aluno> deleteAluno(@PathVariable("matricula") Long matricula) throws Exception {
 		return new ResponseEntity<>(alunoService.excluir(matricula), HttpStatus.OK);
 	}

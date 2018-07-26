@@ -10,13 +10,9 @@ import javax.persistence.Table;
 public class Aluno {
 	
 	@Id
-	private Integer matricula;
+	private Long matricula;
 	@Column(nullable = false)
 	private String nome;
-	@Column(nullable = false)
-	private String cpf;
-	@Column(nullable = false)
-	private String dataNascimento;
 	@Column(nullable = false)
 	private String email;
 	
@@ -26,29 +22,18 @@ public class Aluno {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getMatricula() {
+	public Long getMatricula() {
 		return matricula;
 	}
-	public void setMatricula(Integer matricula) {
+	public void setMatricula(Long matricula) {
 		this.matricula = matricula;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
 	}
 	
 }

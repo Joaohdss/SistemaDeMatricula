@@ -32,7 +32,16 @@ public class AlunoService {
 		
 		return aluno;
 	}
-	
+	public Aluno buscaEmail(String email) {
+		Collection<Aluno> alunos = alunoRepository.findAll();
+		for (Aluno aluno : alunos) {
+			if(aluno.getEmail().equalsIgnoreCase(email)) {
+				return aluno;
+			}
+		}
+		return null;
+		
+	}
 	public Aluno update(Aluno aluno, Long matricula) throws Exception {
 		Optional<Aluno> optAluno = alunoRepository.findById(matricula);
 		if (!optAluno.isPresent()) {
