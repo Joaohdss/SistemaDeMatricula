@@ -16,13 +16,13 @@ public class Aluno {
 	@Column(nullable = false)
 	private String email;
 	@Column(nullable = false)
-	private String periodoInicial;
+	private int periodoInicial;
 	
-	public String getPeriodoInicial() {
+	public int getPeriodoInicial() {
 		return periodoInicial;
 	}
 	
-	public void setPeriodoInicial(String periodoInicial) {
+	public void setPeriodoInicial(int periodoInicial) {
 		this.periodoInicial = periodoInicial;
 	}
 	
