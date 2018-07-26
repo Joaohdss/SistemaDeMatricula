@@ -15,16 +15,29 @@ public class Aluno {
 	private String nome;
 	@Column(nullable = false)
 	private String email;
+	@Column(nullable = false)
+	private String periodoInicial;
+	
+	public String getPeriodoInicial() {
+		return periodoInicial;
+	}
+	
+	public void setPeriodoInicial(String periodoInicial) {
+		this.periodoInicial = periodoInicial;
+	}
 	
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public Long getMatricula() {
 		return matricula;
 	}
+	
 	public void setMatricula(Long matricula) {
 		this.matricula = matricula;
 	}
@@ -32,8 +45,8 @@ public class Aluno {
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
 }
