@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,4 +27,12 @@ public class CoordenadorController {
 	public ResponseEntity<Collection<Coordenador>> busca() {
 		return new ResponseEntity<>(coordenadorService.buscarTodos(), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/api/coord/put/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Coordenador> editarSenhar(@PathVariable("email") String emailCoordenador, @RequestBody Coordenador coordenador) throws Exception {
+		Integer id = coordenadorService.encontrarIdPorEmail(emailCoordenador);
+		Coordenador cord = coordenadorService.atualizarSenha(coordenador, id);
+		return new ResponseEntity<>(cord,HttpStatus.OK);
+	}
+	
 }

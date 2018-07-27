@@ -46,4 +46,13 @@ public class CoordenadorService {
 		
 		return newCoord;
 	}
+	public Integer encontrarIdPorEmail(String email) {
+		Collection<Coordenador> coordenadores = coordenadorRepository.findAll();
+		for (Coordenador coordenador : coordenadores) {
+			if(coordenador.getEmail().equalsIgnoreCase(email)) {
+				return coordenador.getIdCoordenador();
+			}
+		}
+		return -1;
+	}
 }
