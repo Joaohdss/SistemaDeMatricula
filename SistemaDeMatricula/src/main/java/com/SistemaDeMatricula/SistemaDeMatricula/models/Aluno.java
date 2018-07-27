@@ -1,5 +1,7 @@
 package com.SistemaDeMatricula.SistemaDeMatricula.models;
 
+import java.util.ArrayList;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,7 +19,7 @@ public class Aluno {
 	private String email;
 	@Column(nullable = false)
 	private int periodoInicial;
-	
+	private ArrayList<String> disciplinasPreMatriculadas;
 	public int getPeriodoInicial() {
 		return periodoInicial;
 	}
@@ -30,6 +32,14 @@ public class Aluno {
 		return email;
 	}
 	
+	public ArrayList<String> getDisciplinasPreMatriculadas() {
+		return disciplinasPreMatriculadas;
+	}
+
+	public void setDisciplinasPreMatriculadas(ArrayList<String> disciplinasPreMatriculadas) {
+		this.disciplinasPreMatriculadas = disciplinasPreMatriculadas;
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
