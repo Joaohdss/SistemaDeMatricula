@@ -28,7 +28,7 @@ public class CoordenadorController {
 		return new ResponseEntity<>(coordenadorService.buscarTodos(), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/api/coord/put/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/api/coord/put/{email}", method = RequestMethod.PUT)
 	public ResponseEntity<Coordenador> editarSenhar(@PathVariable("email") String emailCoordenador, @RequestBody Coordenador coordenador) throws Exception {
 		Integer id = coordenadorService.encontrarIdPorEmail(emailCoordenador);
 		Coordenador cord = coordenadorService.atualizarSenha(coordenador, id);
