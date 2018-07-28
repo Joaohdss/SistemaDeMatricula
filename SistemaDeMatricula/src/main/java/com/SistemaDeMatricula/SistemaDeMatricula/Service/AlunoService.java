@@ -20,13 +20,11 @@ public class AlunoService {
 	
 	public Aluno add(Aluno aluno) throws Exception {
 		Aluno alunoAdd = null;
-		
-		String senhaS = aluno.getSenha();
-		aluno.setSenha(util.criptografar(senhaS));
-		
-		if(util.validaEmailAluno(aluno.getEmail()) && util.validaNomeAluno(aluno.getNome())) {
-			if (existe(aluno.getEmail(), aluno.getMatricula()) == false)
+		if(util.validaEmailAluno(aluno.getEmail()) && util.validaNomeAluno(aluno.getNome()) && util.validaSenha(aluno.getSenha())) {
+			if (!existe(aluno.getEmail(), aluno.getMatricula())) {
+				aluno.setSenha(util.criptografar(aluno.getSenha()));
 				alunoAdd = alunoRepository.save(aluno);
+			}	
 		}
 		return alunoAdd;
 	}
@@ -59,6 +57,8 @@ public class AlunoService {
 		if (!optAluno.isPresent()) {
 			throw new Exception("Aluno don't exists");
 		}
+		if (!util.validaSenha(aluno.getSenha()))
+			return null;
 		Aluno newAluno = optAluno.get();
 		newAluno.setSenha(util.criptografar(aluno.getSenha()));
 		alunoRepository.save(newAluno);

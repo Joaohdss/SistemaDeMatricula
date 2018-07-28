@@ -46,6 +46,14 @@ public class Util {
 		return status;
 	}
 	
+	public boolean validaSenha(String senha) {
+		boolean status = true;
+		
+		if (senha.length() < 6) 
+			status = false;
+		return status;
+	}
+	
 	public String criptografar(String senha) {
 		return Base64.encodeBase64String(senha.getBytes());
 	}
