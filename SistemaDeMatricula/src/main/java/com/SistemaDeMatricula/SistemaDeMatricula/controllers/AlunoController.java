@@ -21,8 +21,12 @@ public class AlunoController {
 	AlunoService alunoService;
 	
 	@RequestMapping(value = "/api/aluno/post", method = RequestMethod.POST)
-	public ResponseEntity<Aluno> add(@RequestBody Aluno aluno) {
-		return new ResponseEntity<>(alunoService.add(aluno),HttpStatus.OK);
+	public ResponseEntity<Aluno> add(@RequestBody Aluno aluno) throws Exception {
+		Aluno novoAluno = alunoService.add(aluno);
+		if(novoAluno.equals(null)) {
+			return new ResponseEntity<>(novoAluno,HttpStatus.FAILED_DEPENDENCY);
+		}
+		return new ResponseEntity<>(novoAluno,HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/api/aluno/get", method = RequestMethod.GET)

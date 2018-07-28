@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.SistemaDeMatricula.SistemaDeMatricula.Util.Util;
 import com.SistemaDeMatricula.SistemaDeMatricula.models.Coordenador;
 import com.SistemaDeMatricula.SistemaDeMatricula.repository.CoordenadorRepository;
 
@@ -14,9 +15,16 @@ public class CoordenadorService {
 	
 	@Autowired
 	CoordenadorRepository coordenadorRepository;
+	@Autowired
+	Util util;
 	
 	public Coordenador add(Coordenador coordenador) {
-		return coordenadorRepository.save(coordenador);
+		Coordenador coordAdd = null;
+		if (util.validaEmailCoord(coordenador.getEmail()) && util.validaSenha(coordenador.getSenha())) {
+			coordenador.setSenha(util.criptografar(coordenador.getSenha()));
+			coordAdd = coordenadorRepository.save(coordenador);
+		}
+		return coordAdd;
 	}
 	
 	public Collection<Coordenador> buscarTodos(){
@@ -39,6 +47,8 @@ public class CoordenadorService {
 		if (!opCoordenador.isPresent()) {
 			throw new Exception("Todo don't exists");
 		}
+		if (!util.validaSenha(coordenador.getSenha()))
+			return null;
 		Coordenador newCoord = opCoordenador.get();
 		newCoord.setSenha(coordenador.getSenha());
 		
