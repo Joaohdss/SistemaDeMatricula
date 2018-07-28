@@ -19,7 +19,18 @@ public class Aluno {
 	private String email;
 	@Column(nullable = false)
 	private int periodoInicial;
+	@Column(nullable = false)
+	private String senha;
 	private ArrayList<String> disciplinasPreMatriculadas;
+	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 	public int getPeriodoInicial() {
 		return periodoInicial;
 	}

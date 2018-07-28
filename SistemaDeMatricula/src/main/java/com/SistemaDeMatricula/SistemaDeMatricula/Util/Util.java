@@ -2,7 +2,9 @@ package com.SistemaDeMatricula.SistemaDeMatricula.Util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.commons.codec.binary.Base64;
+
+import org.apache.tomcat.util.codec.binary.Base64;
+
 
 public class Util {
 	
