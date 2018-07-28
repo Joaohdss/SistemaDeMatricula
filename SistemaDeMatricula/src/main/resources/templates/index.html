@@ -13,9 +13,11 @@
     <script type="text/javascript" src="app.js"></script>
 
     <div ng-controller="AppCtrl as vm">
-        <h1>pre_matricula</h1>
+        <h1>mural</h1>
         <p>{{vm.msg}}</p>
-    </div>
+        <p>comprimento msg: {{vm.msg.length}}</p>
+        <p>msg: <input type="text" ng-model="vm.msg"></p>
+      </div>
   
     <!--h1>Ola, mundo!!!!</h1-->
 </body>
