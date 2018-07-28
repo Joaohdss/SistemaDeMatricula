@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Pré-matrícula</title>
 </head>
-<body>
-    <h1>Ola, mundo!!!!</h1>
+<body ng-app="pre_matricula">
+    <!-- Angular JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <!-- Aplicação -->
+    <script type="text/javascript" src="app.js"></script>
+
+    <div ng-controller="AppCtrl as vm">
+        <h1>pre_matricula</h1>
+        <p>{{vm.msg}}</p>
+    </div>
+  
+    <!--h1>Ola, mundo!!!!</h1-->
 </body>
 </html>
