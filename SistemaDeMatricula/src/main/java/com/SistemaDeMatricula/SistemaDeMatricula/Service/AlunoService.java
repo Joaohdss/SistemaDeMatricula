@@ -18,13 +18,17 @@ public class AlunoService {
 	@Autowired
 	Util util;
 	
-	public Aluno add(Aluno aluno) {
+	public Aluno add(Aluno aluno) throws Exception {
+		Aluno alunoAdd = null;
+		
 		String senhaS = aluno.getSenha();
 		aluno.setSenha(util.criptografar(senhaS));
+		
 		if(util.validaEmailAluno(aluno.getEmail()) && util.validaNomeAluno(aluno.getNome())) {
-			return alunoRepository.save(aluno);
+			if (existe(aluno.getEmail(), aluno.getMatricula()) == false)
+				alunoAdd = alunoRepository.save(aluno);
 		}
-		return null;
+		return alunoAdd;
 	}
 	
 	public Collection<Aluno> buscarTodos(){
@@ -73,4 +77,10 @@ public class AlunoService {
 		return aluno;
 	}
 	
+	public boolean existe(String email, Long matricula) throws Exception {
+		boolean status = false;
+		if (buscaEmail(email) != null || BuscaId(matricula) != null) 
+			status = true;
+		return status;
+	}
 }
