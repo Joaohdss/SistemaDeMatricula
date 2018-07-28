@@ -4,8 +4,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.stereotype.Service;
 
 
+@Service
 public class Util {
 	
 	public boolean validaEmailAluno(String email) {

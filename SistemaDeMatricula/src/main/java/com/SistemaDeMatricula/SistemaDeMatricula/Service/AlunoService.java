@@ -2,13 +2,11 @@ package com.SistemaDeMatricula.SistemaDeMatricula.Service;
 
 import java.util.Collection;
 import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.SistemaDeMatricula.SistemaDeMatricula.Util.Util;
 import com.SistemaDeMatricula.SistemaDeMatricula.models.Aluno;
 import com.SistemaDeMatricula.SistemaDeMatricula.repository.AlunoRepository;
 
@@ -17,12 +15,13 @@ public class AlunoService {
 	
 	@Autowired
 	AlunoRepository alunoRepository;
+	@Autowired
+	Util util;
 	
 	public Aluno add(Aluno aluno) {
 		String senhaS = aluno.getSenha();
-		aluno.setSenha(criptografar(senhaS));
-		
-		if(validaEmailAluno(aluno.getEmail())) {
+		aluno.setSenha(util.criptografar(senhaS));
+		if(util.validaEmailAluno(aluno.getEmail())) {
 			return alunoRepository.save(aluno);
 		}
 		return null;
@@ -74,23 +73,4 @@ public class AlunoService {
 		return aluno;
 	}
 	
-	public String criptografar(String senha) {
-		return Base64.encodeBase64String(senha.getBytes());
-	}
-	
-	public String descriptografar(String senhaCriptografada) {
-		byte[] senha = Base64.decodeBase64(senhaCriptografada);
-		return new String(senha);
-	}
-	public boolean validaEmailAluno(String email) {
-		boolean status = false;
-		
-		String strPadrao = "[a-zA-Z]+[a-zA-Z.]*+@ccc.ufcg.edu.br";
-		Pattern pattern = Pattern.compile(strPadrao);
-		Matcher matcher = pattern.matcher(email);
-		
-		if (matcher.matches()) 
-			status = true;
-		return status;
-	}
 }
