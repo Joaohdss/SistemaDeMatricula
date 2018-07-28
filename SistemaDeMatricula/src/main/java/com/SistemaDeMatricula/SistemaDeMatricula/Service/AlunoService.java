@@ -21,7 +21,7 @@ public class AlunoService {
 	public Aluno add(Aluno aluno) {
 		String senhaS = aluno.getSenha();
 		aluno.setSenha(util.criptografar(senhaS));
-		if(util.validaEmailAluno(aluno.getEmail())) {
+		if(util.validaEmailAluno(aluno.getEmail()) && util.validaNomeAluno(aluno.getNome())) {
 			return alunoRepository.save(aluno);
 		}
 		return null;
@@ -48,15 +48,15 @@ public class AlunoService {
 			}
 		}
 		return null;
-		
 	}
+	
 	public Aluno update(Aluno aluno, Long matricula) throws Exception {
 		Optional<Aluno> optAluno = alunoRepository.findById(matricula);
 		if (!optAluno.isPresent()) {
 			throw new Exception("Aluno don't exists");
 		}
 		Aluno newAluno = optAluno.get();
-		newAluno.setNome(aluno.getNome());
+		newAluno.setSenha(util.criptografar(aluno.getSenha()));
 		alunoRepository.save(newAluno);
 		
 		return newAluno;

@@ -34,6 +34,18 @@ public class Util {
 		return status;
 	}
 	
+	public boolean validaNomeAluno(String nome) {
+		boolean status = false;
+		
+		String strPadrao = "[0-9]";
+		Pattern pattern = Pattern.compile(strPadrao);
+		Matcher matcher = pattern.matcher(nome);
+		
+		if (!matcher.find() && nome.length() > 2) 
+			status = true;
+		return status;
+	}
+	
 	public String criptografar(String senha) {
 		return Base64.encodeBase64String(senha.getBytes());
 	}
