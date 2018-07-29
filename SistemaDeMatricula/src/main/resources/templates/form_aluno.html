@@ -1,45 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/materialize.css"><link/>
-    <link rel="stylesheet" href="css/blocosFormulario.css"><link/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/materialize.css">
+  <link/>
+  <link rel="stylesheet" href="css/geral.css">
+  <link/>
 </head>
+
 <body>
-  <div class="blocoFormulario">
-    <div class="row">
-        <form class="col s12" class="test">
-          <div class="row">
-            <div class="input-field col s6">
-              <input id="nome" type="text" class="validate">
-              <label for="nome">Nome</label>
-            </div>
 
-            <div class="input-field col s6">
-              <input id="sobrenome" type="text" class="validate">
-              <label for="sobrenome">Sobrenome</label>
-            </div>
-
-            <div class="input-field col s6">
-                <input id="matricula" type="text" class="validate">
-                <label for="matricula">Matricula</label>
-            </div>
-
-            <div class="input-field col s6">
-                <input id="emailInstitucional" type="text" class="validate">
-                <label for="emailInstitucional">Email Institucional</label>
-            </div>
-
-            <div class="input-field col s6">
-                <input id="periodoEntrada" type="text" class="validate">
-                <label for="periodoEntrada">Periodo de Entrada</label>
-            </div>
-        </form>
-      </div>
+  <nav>
+    <div>
+      <a class="brand-logo">Pré-Matrícula</a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a>Home</a>
+        </li>
+        <li>
+          <a>Login</a>
+        </li>
+      </ul>
     </div>
-      <script src="js/materialize.js"></script>
+  </nav>
+
+  <h3>Formulario Aluno</h3>
+
+  <div class="blocoFormulario posicaoBloco">
+    <div class="row">
+      <form class="col s12" class="test">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="nome" type="text" class="validate">
+            <label for="nome">Nome</label>
+          </div>
+
+          <div class="input-field col s6">
+            <input id="sobrenome" type="text" class="validate">
+            <label for="sobrenome">Sobrenome</label>
+          </div>
+
+          <div class="input-field col s6">
+            <input id="matricula" type="text" class="validate">
+            <label for="matricula">Matricula</label>
+          </div>
+
+          <div class="input-field col s6">
+            <input id="emailInstitucional" type="text" class="validate">
+            <label for="emailInstitucional">Email Institucional</label>
+          </div>
+
+          <div class="input-field col s6">
+            <input id="periodoEntrada" type="text" class="validate">
+            <label for="periodoEntrada">Periodo de Entrada</label>
+          </div>
+      </form>
+      </div>
+
+      <button class="btn waves-effect waves-light" type="submit" name="action">
+        <i class="material-icons right">Enviar</i>
+      </button>
+    </div>
+    <script src="js/materialize.js"></script>
 </body>
+
 </html>
