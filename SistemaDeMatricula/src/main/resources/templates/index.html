@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pré-matrícula</title>
+    <link href="icon/ccc.png" rel="icon"></link>
 
     <!-- Angular JS -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
@@ -13,28 +14,20 @@
     <script type="text/javascript" src="login.js"></script>
     <script type="text/javascript" src="service.js"></script>
 </head>
-<body ng-app="pre_matricula" ng-controller="AppCtrl as vm">
-        <input type="text" ng-model="vm.email"><br>
-        <input type="text" ng-model="vm.senha"><br>
-        <h3>
+<body>
+    <div ng-app="pre_matricula" ng-controller="AppCtrl as vm">
+        <input type="text" ng-model="email"><br>
+        <input type="text" ng-model="senha"><br>
+        <button ng-href="" ng-click="contar();">add</button>
+        <hr>
+        <h1>Contador: {{contador}}</h1>
+        <hr>
+    </div>
+
+       <!--  <h3>
             Email: {{vm.email}}<br>
             senha: {{vm.senha}}<br>
-        </h3>
+        </h3> -->
         
-    <!--
-    <div ng-controller="AppCtrl as vm">
-        <h1>mural</h1>
-        <p>{{vm.msg}}</p>
-        <p>comprimento msg: {{vm.msg.length}}</p>
-        <p>msg: <input type="text" ng-model="vm.msg"></p>
-      </div>
-      <div ng-controller="LoginCtrl as vm">
-        <h1>mural</h1>
-        <p>{{vm.msg}}</p>
-        <p>comprimento msg: {{vm.msg.length}}</p>
-        <p>msg: <input type="text" ng-model="vm.msg"></p>
-      </div>
-      -->
-    <!--h1>Ola, mundo!!!!</h1-->
 </body>
 </html>
