@@ -21,9 +21,20 @@ public class Disciplina implements Serializable{
 	private int numeroDeCreditos;
 	@Column(nullable = false)
 	private int cargaHoraria;
+	@Column(nullable = false)
+	private String grade;
 
+	
 	public int getNumeroDeCreditos() {
 		return numeroDeCreditos;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 
 	public void setNumeroDeCreditos(int numeroDeCreditos) {

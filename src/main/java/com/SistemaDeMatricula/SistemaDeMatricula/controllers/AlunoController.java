@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.SistemaDeMatricula.SistemaDeMatricula.Service.AlunoService;
 import com.SistemaDeMatricula.SistemaDeMatricula.models.Aluno;
+import com.SistemaDeMatricula.SistemaDeMatricula.models.Disciplina;
 
 @Controller
 public class AlunoController {
@@ -21,7 +23,7 @@ public class AlunoController {
 	AlunoService alunoService;
 	
 	@RequestMapping(value = "/api/aluno/post", method = RequestMethod.POST)
-	public ResponseEntity<Aluno> add(@RequestBody Aluno aluno) throws Exception {
+	public ResponseEntity<Aluno> add(@RequestBody Aluno aluno) {
 		Aluno novoAluno = alunoService.add(aluno);
 		if(novoAluno.equals(null)) {
 			return new ResponseEntity<>(novoAluno,HttpStatus.FAILED_DEPENDENCY);
@@ -47,6 +49,11 @@ public class AlunoController {
 	@RequestMapping(value = "/api/aluno/put/{matricula}", method = RequestMethod.PUT)
 	public ResponseEntity<Aluno> setAluno(@PathVariable("matricula") Long matricula, @RequestBody Aluno aluno) throws Exception {
 		Aluno alunoAlterado = alunoService.update(aluno, matricula);
+		return new ResponseEntity<>(alunoAlterado,HttpStatus.OK);
+	}
+	@RequestMapping(value = "/api/aluno/addcadeira/{matricula}", method = RequestMethod.PUT)
+	public ResponseEntity<Aluno> addCadeira(@PathVariable("matricula") Long matricula,@RequestBody Disciplina disciplina) throws Exception {
+		Aluno alunoAlterado = alunoService.AddDisciplina(disciplina.getNome(), matricula);
 		return new ResponseEntity<>(alunoAlterado,HttpStatus.OK);
 	}
 	

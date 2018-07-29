@@ -2,8 +2,6 @@ package com.SistemaDeMatricula.SistemaDeMatricula.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,17 +9,21 @@ import javax.persistence.Table;
 @Table(name = "Coordenador")
 public class Coordenador {
 	
+	
+	@Id
+	private Integer idCoordenador;
 	@Column(nullable = false)
 	private String email;
 	@Column(nullable = false)
 	private String senha;
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer idCoordenador;
-
+	public Integer getIdCoordenador() {
+		return idCoordenador;
+	}
+	public void setIdCoordenador(Integer idCoordenador) {
+		this.idCoordenador = idCoordenador;
+	}
 	public String getEmail() {
-		
 		return email;
 	}
 	public void setEmail(String email) {
@@ -33,12 +35,6 @@ public class Coordenador {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public Integer getIdCoordenador() {
-		return idCoordenador;
-	}
-	public void setIdCoordenador(Integer idCoordenador) {
-		this.idCoordenador = idCoordenador;
-	}
-	
 
+	
 }
