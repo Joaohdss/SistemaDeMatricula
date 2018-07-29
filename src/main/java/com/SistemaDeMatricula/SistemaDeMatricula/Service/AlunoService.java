@@ -18,10 +18,14 @@ public class AlunoService {
 	@Autowired
 	Util util;
 	
-	public Aluno add(Aluno aluno) {
+	public Aluno add(Aluno aluno) throws Exception {
 		String senhaS = aluno.getSenha();
+		boolean verifica = existe(aluno.getEmail(),aluno.getMatricula());
 		aluno.setSenha(util.criptografar(senhaS));
-		if(util.validaEmailAluno(aluno.getEmail())) {
+		if(util.validaEmailAluno(aluno.getEmail())
+				&& util.validaNomeAluno(aluno.getNome()) 
+				&& !verifica) {
+			
 			return alunoRepository.save(aluno);
 			
 		}
@@ -51,6 +55,17 @@ public class AlunoService {
 		return null;
 		
 	}
+	public boolean existe(String email ,Long matricula) throws Exception{
+		Collection<Aluno> alunos = alunoRepository.findAll();
+		boolean result = false;
+		for (Aluno aluno : alunos) {
+			if(aluno.getEmail().equalsIgnoreCase(email) || aluno.getMatricula() == matricula ) {
+				result = true;
+			}
+		}
+		return result;
+		
+	}
 	public Aluno update(Aluno aluno, Long matricula) throws Exception {
 		Optional<Aluno> optAluno = alunoRepository.findById(matricula);
 		if (!optAluno.isPresent()) {
@@ -65,7 +80,7 @@ public class AlunoService {
 	public Aluno AddDisciplina(String disciplina, Long matricula) throws Exception {
 		Optional<Aluno> optAluno = alunoRepository.findById(matricula);
 		if (!optAluno.isPresent()) {
-			throw new Exception("Aluno don't exists");
+			throw new Exception("Aluno não existe");
 		}
 		Aluno newAluno = optAluno.get();
 		newAluno.getDisciplinasPreMatriculadas().add(disciplina);
