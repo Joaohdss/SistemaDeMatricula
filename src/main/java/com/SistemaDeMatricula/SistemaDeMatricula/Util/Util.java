@@ -54,6 +54,13 @@ public class Util {
 		return status;
 	}
 	
+	public boolean verificaSenha(String senhaUsuario, String senhaInformada) {
+		boolean status = true;
+		if (senhaUsuario != senhaInformada)
+			status = false;
+		return status;
+	}
+	
 	public String criptografar(String senha) {
 		return Base64.encodeBase64String(senha.getBytes());
 	}
