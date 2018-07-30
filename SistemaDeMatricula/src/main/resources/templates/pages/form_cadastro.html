@@ -34,59 +34,59 @@
 
   <h3>Cadastro</h3>
 
-  <div ng-controller="CadastroCtrl as vm" class="container blocoFormulario posicaoBloco">
+  <div ng-controller="CadastroCtrl" class="container blocoFormulario posicaoBloco">
     <!-- Email e senha -->
     <form class="col s12" class="test">
       <div class="row">
         <div class="input-field col s6">
-          <input ng-model="vm.email" id="email" type="email" class="validate">
+          <input ng-model="email" id="email" type="email" class="validate">
           <label for="email">Email Institucional</label>
         </div>
         <div class="input-field col s3">
-          <input ng-model="vm.senha1" id="senha1" type="password">
+          <input ng-model="senha1" id="senha1" type="password">
           <label for="senha1">Senha</label>
         </div>
        <div class="input-field col s3">
-          <input ng-model="vm.senha2" type="password">
+          <input ng-model="senha2" type="password">
           <label>Confirmar Senha</label>
-         <i class="small material-icons center" style="{{vm.cor}}">{{vm.confirmSenha}}</i>
+         <i class="small material-icons center" style="{{cor}}">{{confirmSenha}}</i>
         </div>
         <!-- Atributos pessoais -->
         <div class="input-field col s6">
-          <input ng-model="vm.nome" type="text" id="nome" class="validate">
+          <input ng-model="nome" type="text" id="nome" class="validate">
           <label for="nome">Nome Completo</label>
         </div>
 
         <div class="input-field col s3">
-          <input ng-model="vm.matricula" id="matricula" id="matricula" type="text" class="validate">
+          <input ng-model="matricula" id="matricula" id="matricula" type="text" class="validate">
           <label for="matricula">Matricula</label>
         </div>
 
         <div class="input-field col s3">
-          <input ng-model="vm.periodoEntrada" id="periodoEntrada" id="periodoEntrada" type="text" class="validate">
+          <input ng-model="periodoEntrada" id="periodoEntrada" id="periodoEntrada" type="text" class="validate">
           <label for="periodoEntrada">Periodo de Entrada</label>
         </div>
       </div>
     </form>
     <br>
-    <form action="vm.tipoCadastro">
-      <p>tipo cadastro :{{vm.tipoCadastro}}</p>
+    <form action="tipoCadastro">
+      <p>tipo cadastro :{{tipoCadastro}}</p>
       <p>
         <label>
-          <input ng-model="vm.tipoCadastro" name="group1" type="radio" id="aluno" value="aluno" checked />
+          <input ng-model="tipoCadastro" name="group1" type="radio" id="aluno" value="aluno" checked />
           <span for="aluno">Aluno</span>
         </label>
       </p>
       <p>
         <label>
-          <input ng-model="vm.tipoCadastro" name="group1" id="coordenaodr" type="radio" value="coordenador" />
+          <input ng-model="tipoCadastro" name="group1" id="coordenaodr" type="radio" value="coordenador" />
           <span for="coordenador">Coordenador</span>
         </label>
       </p>
     </form>
     <div>
-      <button class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
-        <i class="material-icons left">add_circle_outline</i>
+      <button ng-click="envio()" class="btn waves-effect waves-light" type="submit" name="action">Cadastrar
+        <i class="material-icons right">add_circle_outline</i>
       </button>
     </div>
   </div>

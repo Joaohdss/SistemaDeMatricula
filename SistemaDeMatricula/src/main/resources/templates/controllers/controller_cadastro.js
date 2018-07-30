@@ -1,30 +1,51 @@
 (function () {
 	const app = angular.module('pre_matricula');
 
-	app.controller('CadastroCtrl', function CadastroCtrl() {
-		const vm = this;
-		vm.email = "";
-		vm.senha1 = "";
-		vm.senha2 = "";
-		vm.cor = "color:red";
-		vm.confirmSenha = "cancelar";
-		vm.nome = "";
-		vm.matricula = "";
-		vm.periodoEntrada = "";
-		vm.tipoCadastro = "aluno";
-		console.log(vm.tipoCadastro);
+	function cadastroAluno($scope, $http){
+		console.log("chegou na função");
+		$http({
+			method: 'POST' ,
+			"matricula":$scope.matricula,
+			"nome": $scope.nome,
+			"email": $scope.email,
+			"periodoInicial": $scope.periodoEntrada,
+			"senha": $scope.senha1,
+			"disciplinasPreMatriculadas":null,
+			url: 'http://localhost:8080/api/aluno/post'
+		});
+		$scope.tipoCadastro = "cadastrado";
+
+	};
+
+
+	app.controller('CadastroCtrl', function CadastroCtrl($scope,$http) {
+		//const vm = this;
+		$scope.email = null;
+		$scope.senha1 = "";
+		$scope.senha2 = null;
+		$scope.cor = "color:red";
+		$scope.confirmSenha = "cancelar";
+		$scope.nome = null;
+		$scope.matricula = null;
+		$scope.periodoEntrada = null;
+		$scope.tipoCadastro = "aluno";//Autera de acordo com o selecionado no cadastro
+
+		$scope.envio = function () {
+			cadastroAluno($scope,$http);
+			console.log("passou pelo atributo");
+		};
 
 		setInterval(function checkSenha() {
-			if ((vm.senha1.length > 0) && (vm.senha1 === vm.senha2)) {
-				vm.cor = "color:green";
-				vm.confirmSenha = "check_circle";
+			if (($scope.senha1.length > 0) && ($scope.senha1 === $scope.senha2)) {
+				$scope.cor = "color:green";
+				$scope.confirmSenha = "check_circle";
 			}
 			else {
-				vm.cor = "color:red";
-				vm.confirmSenha = "cancelar";
+				$scope.cor = "color:red";
+				$scope.confirmSenha = "cancelar";
 			}
-			if (vm.matricula > 0) {
-				vm.periodoEntrada = vm.matricula.charAt(1) + vm.matricula.charAt(2) + "." + vm.matricula.charAt(3);
+			if ($scope.matricula > 0) {
+				$scope.periodoEntrada = $scope.matricula.charAt(1) + $scope.matricula.charAt(2) + "." + $scope.matricula.charAt(3);
 			}
 		}, 100)
 	});
