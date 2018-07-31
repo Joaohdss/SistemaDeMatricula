@@ -21,14 +21,14 @@
 	app.controller('CadastroCtrl', function CadastroCtrl($scope,$http) {
 		//const vm = this;
 		$scope.email = null;
-		$scope.senha1 = "";
+		$scope.senha1 = null;
 		$scope.senha2 = null;
 		$scope.cor = "color:red";
 		$scope.confirmSenha = "cancelar";
 		$scope.nome = null;
 		$scope.matricula = null;
 		$scope.periodoEntrada = null;
-		$scope.tipoCadastro = "aluno";//Autera de acordo com o selecionado no cadastro
+		$scope.tipoCadastro = "aluno";//estado defaout
 
 		$scope.envio = function () {
 			cadastroAluno($scope,$http);
@@ -36,7 +36,7 @@
 		};
 
 		setInterval(function checkSenha() {
-			if (($scope.senha1.length > 0) && ($scope.senha1 === $scope.senha2)) {
+			if (($scope.senha1 > 0) && ($scope.senha1 === $scope.senha2)) {
 				$scope.cor = "color:green";
 				$scope.confirmSenha = "check_circle";
 			}
