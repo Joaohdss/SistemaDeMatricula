@@ -36,5 +36,10 @@ public class CoordenadorController {
 		Coordenador cord = coordenadorService.atualizarSenha(coordenador, id);
 		return new ResponseEntity<>(cord,HttpStatus.OK);
 	}
+	@RequestMapping(value = "/api/coord/login", method = RequestMethod.PUT)
+	public ResponseEntity<HttpStatus> getLogin(@RequestBody Coordenador aluno) throws Exception {
+		coordenadorService.Login(aluno.getEmail(), aluno.getSenha());
+		return new ResponseEntity<>(HttpStatus.ACCEPTED,HttpStatus.OK);
+	}
 	
 }
