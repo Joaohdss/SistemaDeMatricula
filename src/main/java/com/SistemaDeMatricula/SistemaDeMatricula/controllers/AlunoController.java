@@ -36,6 +36,11 @@ public class AlunoController {
 		return new ResponseEntity<>(alunos, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/api/aluno/login", method = RequestMethod.PUT)
+	public ResponseEntity<HttpStatus> getLogin(@RequestBody Aluno aluno) throws Exception {
+		alunoService.Login(aluno.getEmail(), aluno.getSenha());
+		return new ResponseEntity<>(HttpStatus.ACCEPTED,HttpStatus.OK);
+	}
 	@RequestMapping(value = "/api/aluno/matricula/{matricula}", method = RequestMethod.GET)
 	public ResponseEntity<Aluno> buscaMatricula(@PathVariable("matricula") Long matricula) throws Exception {
 		return new ResponseEntity<>(alunoService.BuscaId(matricula), HttpStatus.OK);

@@ -35,7 +35,16 @@ public class AlunoService {
 	public Collection<Aluno> buscarTodos(){
 		return alunoRepository.findAll();
 	}
-
+	
+	public boolean Login(String email,String senhaInformada) throws Exception{
+		Aluno resulAluno = buscaEmail(email);
+		String senhaAluno = resulAluno.getSenha();
+		if(!util.verificaSenha(senhaAluno, senhaInformada)) {
+			throw new Exception("Login ou senha invalido");
+		}
+		return true;
+		
+	}
 	public Aluno BuscaId(Long matricula) throws Exception {
 		Optional<Aluno> optAluno = alunoRepository.findById(matricula);
 		if(!optAluno.isPresent()) {
@@ -59,7 +68,7 @@ public class AlunoService {
 		Collection<Aluno> alunos = alunoRepository.findAll();
 		boolean result = false;
 		for (Aluno aluno : alunos) {
-			if(aluno.getEmail().equalsIgnoreCase(email) || aluno.getMatricula() == matricula ) {
+			if(aluno.getEmail().equalsIgnoreCase(email) || aluno.getMatricula().equals(matricula) ) {
 				result = true;
 			}
 		}
@@ -89,6 +98,7 @@ public class AlunoService {
 		return newAluno;
 		
 	}
+	
 	public Aluno excluir(Long matricula) throws Exception{
 		Optional<Aluno> optAluno = alunoRepository.findById(matricula);
 		if(!optAluno.isPresent()) {
