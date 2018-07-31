@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="../css/materialize.css">
   <link rel="stylesheet" href="../css/geral.css">
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="../css/normalize.css">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -48,7 +48,7 @@
        <div class="input-field col s3">
           <input ng-model="senha2" type="password">
           <label>Confirmar Senha</label>
-         <i class="small material-icons center" style="{{cor}}">{{confirmSenha}}</i>
+         <i class="small material-icons center" style="color:blueviolet">{{confirmSenha}}</i><!-- {{cor}} -->
         </div>
         <!-- Atributos pessoais -->
         <div class="input-field col s6">
@@ -57,19 +57,18 @@
         </div>
 
         <div class="input-field col s3">
-          <input ng-model="matricula" id="matricula" id="matricula" type="text" class="validate">
+          <input ng-model="matricula" id="matricula" type="text" class="validate">
           <label for="matricula">Matricula</label>
         </div>
 
         <div class="input-field col s3">
-          <input ng-model="periodoEntrada" id="periodoEntrada" id="periodoEntrada" type="text" class="validate">
+          <input ng-model="periodoEntrada" id="periodoEntrada" type="number" class="validate">
           <label for="periodoEntrada">Periodo de Entrada</label>
         </div>
       </div>
     </form>
     <br>
     <form action="tipoCadastro">
-      <p>tipo cadastro :{{tipoCadastro}}</p>
       <p>
         <label>
           <input ng-model="tipoCadastro" name="group1" type="radio" id="aluno" value="aluno" checked />
@@ -90,7 +89,7 @@
     </div>
   </div>
 
-  <script src="../js/materialize.js"></script>
+  <script type="text/javascript" src="../js/materialize.js"></script>
   <script type="text/javascript" src="../static/angular.min.js"></script>
   <script type="text/javascript" src="../controllers/app.js"></script>
   <script type="text/javascript" src="../controllers/controller_cadastro.js"></script>
