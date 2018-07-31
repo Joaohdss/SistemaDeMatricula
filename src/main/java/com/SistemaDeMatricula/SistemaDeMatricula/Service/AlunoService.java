@@ -19,20 +19,32 @@ public class AlunoService {
 	Util util;
 	
 	public Aluno add(Aluno aluno) throws Exception {
-		Aluno alunoAdd = null;
-		if(util.validaEmailAluno(aluno.getEmail()) && util.validaNomeAluno(aluno.getNome()) && util.validaSenha(aluno.getSenha())) {
-			if (!existe(aluno.getEmail(), aluno.getMatricula())) {
-				aluno.setSenha(util.criptografar(aluno.getSenha()));
-				alunoAdd = alunoRepository.save(aluno);
-			}	
+		String senhaS = aluno.getSenha();
+		boolean verifica = existe(aluno.getEmail(),aluno.getMatricula());
+		aluno.setSenha(util.criptografar(senhaS));
+		if(util.validaEmailAluno(aluno.getEmail())
+				&& util.validaNomeAluno(aluno.getNome()) 
+				&& !verifica) {
+			
+			return alunoRepository.save(aluno);
+			
 		}
-		return alunoAdd;
+		return null;
 	}
 	
 	public Collection<Aluno> buscarTodos(){
 		return alunoRepository.findAll();
 	}
-
+	
+	public boolean Login(String email,String senhaInformada) throws Exception{
+		Aluno resulAluno = buscaEmail(email);
+		String senhaAluno = resulAluno.getSenha();
+		if(!util.verificaSenha(senhaAluno, senhaInformada)) {
+			throw new Exception("Login ou senha invalido");
+		}
+		return true;
+		
+	}
 	public Aluno BuscaId(Long matricula) throws Exception {
 		Optional<Aluno> optAluno = alunoRepository.findById(matricula);
 		if(!optAluno.isPresent()) {
@@ -50,20 +62,41 @@ public class AlunoService {
 			}
 		}
 		return null;
+		
 	}
-	
+	public boolean existe(String email ,Long matricula) throws Exception{
+		Collection<Aluno> alunos = alunoRepository.findAll();
+		boolean result = false;
+		for (Aluno aluno : alunos) {
+			if(aluno.getEmail().equalsIgnoreCase(email) || aluno.getMatricula().equals(matricula) ) {
+				result = true;
+			}
+		}
+		return result;
+		
+	}
 	public Aluno update(Aluno aluno, Long matricula) throws Exception {
 		Optional<Aluno> optAluno = alunoRepository.findById(matricula);
 		if (!optAluno.isPresent()) {
 			throw new Exception("Aluno don't exists");
 		}
-		if (!util.validaSenha(aluno.getSenha()))
-			return null;
 		Aluno newAluno = optAluno.get();
-		newAluno.setSenha(util.criptografar(aluno.getSenha()));
+		newAluno.setNome(aluno.getNome());
 		alunoRepository.save(newAluno);
 		
 		return newAluno;
+	}
+	public Aluno AddDisciplina(String disciplina, Long matricula) throws Exception {
+		Optional<Aluno> optAluno = alunoRepository.findById(matricula);
+		if (!optAluno.isPresent()) {
+			throw new Exception("Aluno não existe");
+		}
+		Aluno newAluno = optAluno.get();
+		newAluno.getDisciplinasPreMatriculadas().add(disciplina);
+		alunoRepository.save(newAluno);
+		
+		return newAluno;
+		
 	}
 	
 	public Aluno excluir(Long matricula) throws Exception{
@@ -77,10 +110,4 @@ public class AlunoService {
 		return aluno;
 	}
 	
-	public boolean existe(String email, Long matricula) throws Exception {
-		boolean status = false;
-		if (buscaEmail(email) != null || BuscaId(matricula) != null) 
-			status = true;
-		return status;
-	}
 }

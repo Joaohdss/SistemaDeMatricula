@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.SistemaDeMatricula.SistemaDeMatricula.Service.AlunoService;
 import com.SistemaDeMatricula.SistemaDeMatricula.models.Aluno;
+import com.SistemaDeMatricula.SistemaDeMatricula.models.Disciplina;
 
 @Controller
 public class AlunoController {
@@ -35,6 +36,11 @@ public class AlunoController {
 		return new ResponseEntity<>(alunos, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/api/aluno/login", method = RequestMethod.PUT)
+	public ResponseEntity<HttpStatus> getLogin(@RequestBody Aluno aluno) throws Exception {
+		alunoService.Login(aluno.getEmail(), aluno.getSenha());
+		return new ResponseEntity<>(HttpStatus.ACCEPTED,HttpStatus.OK);
+	}
 	@RequestMapping(value = "/api/aluno/matricula/{matricula}", method = RequestMethod.GET)
 	public ResponseEntity<Aluno> buscaMatricula(@PathVariable("matricula") Long matricula) throws Exception {
 		return new ResponseEntity<>(alunoService.BuscaId(matricula), HttpStatus.OK);
@@ -47,6 +53,11 @@ public class AlunoController {
 	@RequestMapping(value = "/api/aluno/put/{matricula}", method = RequestMethod.PUT)
 	public ResponseEntity<Aluno> setAluno(@PathVariable("matricula") Long matricula, @RequestBody Aluno aluno) throws Exception {
 		Aluno alunoAlterado = alunoService.update(aluno, matricula);
+		return new ResponseEntity<>(alunoAlterado,HttpStatus.OK);
+	}
+	@RequestMapping(value = "/api/aluno/addcadeira/{matricula}", method = RequestMethod.PUT)
+	public ResponseEntity<Aluno> addCadeira(@PathVariable("matricula") Long matricula,@RequestBody Disciplina disciplina) throws Exception {
+		Aluno alunoAlterado = alunoService.AddDisciplina(disciplina.getNome(), matricula);
 		return new ResponseEntity<>(alunoAlterado,HttpStatus.OK);
 	}
 	

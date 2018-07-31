@@ -21,7 +21,7 @@ public class Aluno {
 	private int periodoInicial;
 	@Column(nullable = false)
 	private String senha;
-	private ArrayList<String> disciplinasPreMatriculadas;
+	private ArrayList<String> disciplinasPreMatriculadas = new ArrayList<>();
 	
 	public String getSenha() {
 		return senha;
