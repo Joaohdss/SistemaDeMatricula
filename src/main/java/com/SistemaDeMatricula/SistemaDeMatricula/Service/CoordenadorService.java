@@ -30,7 +30,24 @@ public class CoordenadorService {
 	public Collection<Coordenador> buscarTodos(){
 		return coordenadorRepository.findAll();
 	}
-	
+	public boolean Login(String email,String senhaInformada) throws Exception{
+		Coordenador resulCoord = buscaEmail(email);
+		String senhaCord = resulCoord.getSenha();
+		if(!util.verificaSenha(senhaCord, senhaInformada)) {
+			throw new Exception("Login ou senha invalido");
+		}
+		return true;
+		
+	}
+	public Coordenador buscaEmail(String email) {
+		Collection<Coordenador> coordenadors = buscarTodos();
+		for (Coordenador coordenador : coordenadors) {
+			if(coordenador.getEmail().equalsIgnoreCase(email)) {
+				return coordenador;
+			}
+		}
+		return null;
+	}
 	public Coordenador excluir(Integer id) throws Exception{
 		Optional<Coordenador> opCoordenador = coordenadorRepository.findById(id);
 		
