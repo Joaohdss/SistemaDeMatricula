@@ -21,7 +21,7 @@ public class CoordenadorController {
 	CoordenadorService coordenadorService;
 
 	@RequestMapping(value = "/api/coord/post", method = RequestMethod.POST)
-	public ResponseEntity<Coordenador> add(@RequestBody Coordenador coordenador) {
+	public ResponseEntity<Coordenador> add(@RequestBody Coordenador coordenador) throws Exception {
 		return new ResponseEntity<>(coordenadorService.add(coordenador),HttpStatus.OK);
 	}
 	

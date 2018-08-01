@@ -29,7 +29,7 @@ public class AlunoService {
 			return alunoRepository.save(aluno);
 			
 		}
-		return null;
+		throw new Exception("Não foi possivel fazer o cadastro");
 	}
 	
 	public Collection<Aluno> buscarTodos(){
