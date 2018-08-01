@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body ng-app="pre_matricula">
   <div class="navbar-fixed">
     <nav>
       <a class="brand-logo center">Pré-Matrícula</a>
@@ -29,35 +29,35 @@
   </div>
   <h3> Login </h3>
 
-  <div class="container blocoLogin posicaoBloco">
+  <div ng-controller="Login" class="container blocoLogin posicaoBloco">
     <div class="row">
       <div class="input-field col s12">
-        <input id="email" type="email" class="validate">
-        <label for="email">Email</label>
+          <input ng-model="email" id="email" type="email" class="validate">
+          <label for="email">Email Institucional</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="senha" type="password" class="validate">
-        <label for="senha">Senha</label>
+          <input ng-model="senha" id="senha1" type="password">
+          <label for="senha">Senha</label>
       </div>
     </div>
 
-    <form action="#">
-      <p>
-        <label>
-          <input name="group1" type="radio" checked />
-          <span>Aluno</span>
-        </label>
-      </p>
-      <p>
-        <label>
-          <input name="group1" type="radio" />
-          <span>Coordenador</span>
-        </label>
-      </p>
-    </form>
-    <button class="btn waves-effect waves-light" type="submit" name="action">Login
+    <form action="tipoCadastro">
+        <p>
+          <label>
+            <input ng-model="tipoCadastro" name="group1" type="radio" id="aluno" value="aluno" checked />
+            <span for="aluno">Aluno</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input ng-model="tipoCadastro" name="group1" id="coordenaodr" type="radio" value="coordenador" />
+            <span for="coordenador">Coordenador</span>
+          </label>
+        </p>
+      </form>
+    <button  ng-click="envio()" class="btn waves-effect waves-light" type="submit" name="action">Login
       <i class="material-icons right">send</i>
     </button>
     <a th:href="@{/form_cadastro.html}" href="form_cadastro.html">
