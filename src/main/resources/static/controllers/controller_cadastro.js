@@ -64,6 +64,7 @@
 				$scope.periodoEntrada = parseInt($scope.matricula.charAt(1) + $scope.matricula.charAt(2) + "." + $scope.matricula.charAt(3));
 			} */
 		}, 100)
+
 	});
 
 }());
