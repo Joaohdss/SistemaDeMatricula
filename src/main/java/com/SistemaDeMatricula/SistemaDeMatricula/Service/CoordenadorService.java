@@ -18,13 +18,15 @@ public class CoordenadorService {
 	@Autowired
 	Util util;
 	
-	public Coordenador add(Coordenador coordenador) {
+	public Coordenador add(Coordenador coordenador) throws Exception {
 		Coordenador coordAdd = null;
-		if (util.validaEmailCoord(coordenador.getEmail()) && util.validaSenha(coordenador.getSenha())) {
+		if (util.validaEmailCoord(coordenador.getEmail()) && util.validaSenha(coordenador.getSenha())
+				&& !(existeEmail(coordenador.getEmail()))) {
 			coordenador.setSenha(util.criptografar(coordenador.getSenha()));
 			coordAdd = coordenadorRepository.save(coordenador);
+			return coordAdd;
 		}
-		return coordAdd;
+		throw new Exception("Não foi possivel fazer o cadastro");
 	}
 	
 	public Collection<Coordenador> buscarTodos(){
@@ -81,5 +83,14 @@ public class CoordenadorService {
 			}
 		}
 		return -1;
+	}
+	public  boolean existeEmail(String email) {
+		Collection<Coordenador> coordenadores = buscarTodos();
+		for (Coordenador coordenador : coordenadores) {
+			if(coordenador.getEmail().equalsIgnoreCase(email)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
