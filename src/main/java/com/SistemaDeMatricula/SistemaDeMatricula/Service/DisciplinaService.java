@@ -56,9 +56,50 @@ public class DisciplinaService {
 		}
 		Disciplina newDisciplina = optDisciplina.get();
 		newDisciplina.setNome(disciplina.getNome());
-		
 		disciplinaRepository.save(newDisciplina);
-		
 		return newDisciplina;
 	}
+	public Disciplina buscaPorNome(String nome) throws Exception {
+		Collection<Disciplina> disciplinas = buscarTodos();
+		for (Disciplina disciplina : disciplinas) {
+			if (disciplina.getNome().equals(nome)) {
+				return disciplina;
+			}
+		}
+		return null;
+	}
+	public Disciplina diminuirVaga(String disciplina) throws Exception {
+		Collection<Disciplina> disciplinas = buscarTodos();
+		for (Disciplina disci : disciplinas) {
+			if(disci.getNome().equalsIgnoreCase(disciplina)) {
+				Optional<Disciplina> optDisciplina = disciplinaRepository.findById(disci.getId());
+				if (!optDisciplina.isPresent()) {
+					throw new Exception("Todo don't exists");
+				}
+				Disciplina newDisciplina = optDisciplina.get();
+				newDisciplina.setVagas(disci.getVagas() - 1);
+				disciplinaRepository.save(newDisciplina);
+				return newDisciplina;
+			}
+		}
+		return null;
+	}
+	
+	public Disciplina aumentarVaga(String disciplina) throws Exception {
+		Collection<Disciplina> disciplinas = buscarTodos();
+		for (Disciplina disci : disciplinas) {
+			if(disci.getNome().equalsIgnoreCase(disciplina)) {
+				Optional<Disciplina> optDisciplina = disciplinaRepository.findById(disci.getId());
+				if (!optDisciplina.isPresent()) {
+					throw new Exception("Todo don't exists");
+				}
+				Disciplina newDisciplina = optDisciplina.get();
+				
+				newDisciplina.setVagas(disci.getVagas() + 1);
+				disciplinaRepository.save(newDisciplina);
+				return newDisciplina;
+			}
+		}
+		return null;
+}
 }

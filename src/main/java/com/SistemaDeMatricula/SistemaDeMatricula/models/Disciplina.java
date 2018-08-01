@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Disciplina implements Serializable{
 	
 	private static final long serialVersionUID = 9012679095745610133L;
-	
+	int valorVagas = 60;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -26,8 +26,16 @@ public class Disciplina implements Serializable{
 	private int cargaHoraria;
 	@Column(nullable = false)
 	private String grade;
-
+	private  int vagas = valorVagas;
 	
+	public int getVagas() {
+		return vagas;
+	}
+
+	public void setVagas(int vagas) {
+		this.vagas = vagas;
+	}
+
 	public int getNumeroDeCreditos() {
 		return numeroDeCreditos;
 	}

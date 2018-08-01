@@ -35,6 +35,10 @@ public class DisciplinaController {
 	public ResponseEntity<Disciplina> buscaId(@PathVariable("id") Integer id) throws Exception {
 		return new ResponseEntity<>(disciplinaService.BuscaId(id), HttpStatus.OK);
 	}
+	@RequestMapping(value = "/api/get/nome/{nome}", method = RequestMethod.GET)
+	public ResponseEntity<Disciplina> buscaNome(@PathVariable("nome") String nome) throws Exception {
+		return new ResponseEntity<>(disciplinaService.buscaPorNome(nome), HttpStatus.OK);
+	}
 	
 	@RequestMapping(value = "/api/put/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Disciplina> setDisciplina(@PathVariable("id") int id, @RequestBody Disciplina disciplina) throws Exception {
@@ -45,5 +49,15 @@ public class DisciplinaController {
 	@RequestMapping(value = "/api/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Disciplina> deleteDisciplina(@PathVariable("id") Integer id) throws Exception {
 		return new ResponseEntity<>(disciplinaService.excluir(id), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/api/put/diminuirVaga/{nome}", method = RequestMethod.PUT)
+	public ResponseEntity<Disciplina> diminuirVaga(@PathVariable("nome") String nome) throws Exception {
+		return new ResponseEntity<>(disciplinaService.diminuirVaga(nome), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/api/put/aumentarVaga/{nome}", method = RequestMethod.PUT)
+	public ResponseEntity<Disciplina> aumentarVaga(@PathVariable("nome") String nome) throws Exception {
+		return new ResponseEntity<>(disciplinaService.aumentarVaga(nome), HttpStatus.OK);
 	}
 }
