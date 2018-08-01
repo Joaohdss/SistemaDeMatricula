@@ -24,7 +24,7 @@
             <a class="brand-logo center navbar-fixed">Pré-Matrícula</a>
             <ul class="right hide-on-small-and-up">
                 <li>
-                    <a th:href="@{/form_cadstro_lista_disciplina}" href="form_cadstro_lista_disciplina.html">Cadastro Lista Disciplinas</a>
+                    <a th:href="@{/form_disciplina}" href="form_disciplina.html">Cadastro Disciplinas</a>
                 </li>
                 <li>
                     <a th:href="@{/index}" href="index.html">Login</a>
@@ -34,41 +34,12 @@
     </div>
 
 
-    <h3>Cadastramento de Disciplina</h3>
+    <h3>Lista Discliplinas</h3>
 
     <div ng-controller="DisciplinaCtrl" class="blocoFormulario posicaoBloco">
         <div class="row">
             <form class="col s12" class="test">
                 <div class="row">
-                    <div class="input-field col s8">
-                        <input ng-model="nome" id="nome" type="text" class="validate">
-                        <label for="nome">Nome</label>
-                    </div>
-
-                    <div class="input-field col s4">
-                        <input ng-model="id" id="id" type="number" class="validate">
-                        <label for="id">ID</label>
-                    </div>
-
-                    <div class="input-field col s3">
-                        <input ng-model="numeroDeCreditos" id="grade" type="number" class="validate">
-                        <label for="numeroDeCreditos">Créditos</label>
-                    </div>
-
-                    <div class="input-field col s3">
-                        <input ng-model="cargaHoraria" id="cargaHoraria" type="number" class="validate">
-                        <label for="cargaHoraria">Carga Horárioa</label>
-                    </div>
-
-                    <div class="input-field col s3">
-                        <input ng-model="grade" id="grade" type="text" class="validate">
-                        <label for="grade">grade</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <input ng-model="vagas" id="vagas" type="number" class="validate">
-                        <label for="vagas">Num Vagas</label>
-                    </div>
-
                     <button ng-click="envio()" class="btn waves-effect waves-light" type="submit" name="action">Cadastrar Disciplina
                         <i class="material-icons left">add_circle_outline</i>
                     </button>

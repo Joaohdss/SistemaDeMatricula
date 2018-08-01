@@ -2,7 +2,7 @@
     const app = angular.module('pre_matricula');
 
     function cadastroAluno($scope, $http) {
-		$http.post('http://localhost:8080/api/aluno/login',{
+		$http.put('http://localhost:8080/api/aluno/login',{
 			"email": $scope.email,
 			"senha": $scope.senha,
 		}).then(function (success) {
@@ -12,7 +12,7 @@
 		});
 	};
 
-    app.controller('Login', function ($scope, $http) {
+    app.controller('LoginCtrl', function LoginCtrl($scope, $http) {
         $scope.email = null;
         $scope.senha = null;
         $scope.tipoCadastro = "aluno";//estado defout

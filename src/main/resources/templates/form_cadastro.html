@@ -8,9 +8,9 @@
   <title>Pré-matrícula</title>
   <link th:href="@{/../static/icon/ccc.png}" rel="icon">
 
-  <link rel="stylesheet" th:href="@{/../static/css/materialize.css}" href="../static/css/materialize.css">
-  <link rel="stylesheet" th:href="@{/../static/css/geral.css}" href="../static/css/geral.css">
-  <link rel="stylesheet" th:href="@{/../static/css/normalize.css}" href="../static/css/normalize.css">
+  <link rel="stylesheet" th:href="@{/../static/css/materialize}" href="../static/css/materialize.css">
+  <link rel="stylesheet" th:href="@{/../static/css/geral}" href="../static/css/geral.css">
+  <link rel="stylesheet" th:href="@{/../static/css/normalize}" href="../static/css/normalize.css">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -25,7 +25,7 @@
       <a class="brand-logo center navbar-fixed">Pré-Matrícula</a>
       <ul class="right hide-on-small-and-up">
         <li>
-          <a href="index.html">Login</a>
+            <a th:href="@{/index}" href="index.html">Login</a>
         </li>
       </ul>
     </nav>
@@ -45,10 +45,11 @@
           <input ng-model="senha1" id="senha1" type="password">
           <label for="senha1">Senha</label>
         </div>
-       <div class="input-field col s3">
+        <div class="input-field col s3">
           <input ng-model="senha2" type="password">
           <label>Confirmar Senha</label>
-         <i class="small material-icons center"  style="color:rgb(29, 148, 211)">{{confirmSenha}}</i><!-- style="{{cor}}"  -->
+          <i class="small material-icons center" style="color:rgb(29, 148, 211)">{{confirmSenha}}</i>
+          <!-- style="{{cor}}"  -->
         </div>
         <!-- Atributos pessoais -->
         <div class="input-field col s6">

@@ -8,9 +8,9 @@
   <title>Pré-matrícula</title>
   <link th:href="@{/../static/icon/ccc.png}" rel="icon">
 
-  <link rel="stylesheet" th:href="@{/css/materialize.css}" href="../static/css/materialize.css">
-  <link rel="stylesheet" th:href="@{/css/geral.css}" href="../static/css/geral.css">
-  <link rel="stylesheet" th:href="@{/css/normalize.css}" href="../static/css/normalize.css">
+  <link rel="stylesheet" th:href="@{/css/materialize}" href="../static/css/materialize.css">
+  <link rel="stylesheet" th:href="@{/css/geral}" href="../static/css/geral.css">
+  <link rel="stylesheet" th:href="@{/css/normalize}" href="../static/css/normalize.css">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -24,6 +24,9 @@
     <nav>
       <a class="brand-logo center">Pré-Matrícula</a>
       <ul class="right hide-on-small-and-up">
+          <li>
+              <a th:href="@{/form_disciplina}" href="form_disciplina.html">Cadastro Disciplinas</a>
+          </li>
       </ul>
     </nav>
   </div>
