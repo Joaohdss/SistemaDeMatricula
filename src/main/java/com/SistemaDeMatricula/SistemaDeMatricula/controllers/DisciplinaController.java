@@ -21,7 +21,7 @@ public class DisciplinaController {
 	private DisciplinaService disciplinaService;
 	
 	@RequestMapping(value = "/api/post", method = RequestMethod.POST)
-	public ResponseEntity<Disciplina> add(@RequestBody Disciplina disciplina) {
+	public ResponseEntity<Disciplina> add(@RequestBody Disciplina disciplina) throws Exception {
 		return new ResponseEntity<>(disciplinaService.add(disciplina),HttpStatus.OK);
 	}
 	
