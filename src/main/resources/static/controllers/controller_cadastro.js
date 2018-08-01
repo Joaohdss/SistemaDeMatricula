@@ -20,7 +20,7 @@
 		$scope.email = null;
 		$scope.senha1 = null;
 		$scope.senha2 = null;
-		$scope.cor = "color:red";
+		$scope.cor =  "style='color:red'";
 		$scope.confirmSenha = "cancelar";
 		$scope.nome = null;
 		$scope.matricula = null;
@@ -37,11 +37,11 @@
 
 		setInterval(function checkSenha() {
 			if (($scope.senha1 > 0) && ($scope.senha1 === $scope.senha2)) {
-				$scope.cor = "color:green";
+				$scope.cor = "style='green'";
 				$scope.confirmSenha = "check_circle";
 			}
 			else {
-				$scope.cor = "color:red";
+				$scope.cor = "style='color:red'";
 				$scope.confirmSenha = "cancelar";
 			}
 			/* if ($scope.matricula > 0) {

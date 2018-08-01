@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pré-matrícula</title>
-  <link href="icon/ccc.png" rel="icon">
+  <link th:href="@{/../static/icon/ccc.png}" rel="icon">
 
   <link rel="stylesheet" th:href="@{/css/materialize.css}" href="../static/css/materialize.css">
   <link rel="stylesheet" th:href="@{/css/geral.css}" href="../static/css/geral.css">
@@ -60,7 +60,7 @@
     <button class="btn waves-effect waves-light" type="submit" name="action">Login
       <i class="material-icons right">send</i>
     </button>
-    <a href="pages/form_cadastro.html">
+    <a th:href="@{/form_cadastro.html}" href="form_cadastro.html">
       <button class="btn waves-effect waves-light">Cadastro
         <i class="material-icons left">add_circle_outline</i>
       </button>
@@ -75,8 +75,9 @@
   <script type="text/javascript" src="../static/js/materialize.min.js"></script>
   <!-- Aplicação -->
   <script type="text/javascript" src="../static/controllers/app.js"></script>
-  <script type="text/javascript" src="../static/controllers/login.js"></script>
-  <script type="text/javascript" src="../static/controllers/service.js"></script>
+  <script type="text/javascript" src="../static/controllers/controller_cadastro.js"></script>
+  <script type="text/javascript" src="../static/controllers/controller_login.js"></script>
+  <script type="text/javascript" src="../static/controllers/controller_service.js"></script>
 </body>
 
 </html>

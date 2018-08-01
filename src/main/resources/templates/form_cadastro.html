@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pré-matrícula</title>
-  <link href="../icon/ccc.png" rel="icon">
+  <link th:href="@{/../static/icon/ccc.png}" rel="icon">
 
-  <link rel="stylesheet" href="../static/css/materialize.css">
-  <link rel="stylesheet" href="../static/css/geral.css">
-  <link rel="stylesheet" href="../static/css/normalize.css">
+  <link rel="stylesheet" th:href="@{/../static/css/materialize.css}" href="../static/css/materialize.css">
+  <link rel="stylesheet" th:href="@{/../static/css/geral.css}" href="../static/css/geral.css">
+  <link rel="stylesheet" th:href="@{/../static/css/normalize.css}" href="../static/css/normalize.css">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -25,7 +25,7 @@
       <a class="brand-logo center navbar-fixed">Pré-Matrícula</a>
       <ul class="right hide-on-small-and-up">
         <li>
-          <a href="../index.html">Login</a>
+          <a href="index.html">Login</a>
         </li>
       </ul>
     </nav>
@@ -48,7 +48,7 @@
        <div class="input-field col s3">
           <input ng-model="senha2" type="password">
           <label>Confirmar Senha</label>
-         <i class="small material-icons center" style="color:blueviolet" >{{confirmSenha}}</i><!-- style="{{cor}}"  --> 
+         <i class="small material-icons center"  style="color:blueviolet">{{confirmSenha}}</i><!-- style="{{cor}}"  -->
         </div>
         <!-- Atributos pessoais -->
         <div class="input-field col s6">
@@ -89,10 +89,16 @@
     </div>
   </div>
 
-  <script type="text/javascript" src="../js/materialize.js"></script>
-  <script type="text/javascript" src="../static/angular.min.js"></script>
-  <script type="text/javascript" src="../controllers/app.js"></script>
-  <script type="text/javascript" src="../controllers/controller_cadastro.js"></script>
+  <!-- Angular JS -->
+  <script type="text/javascript" src="../static/js/angular.min.js"></script>
+  <script type="text/javascript" src="../static/js/angular-route.js"></script>
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="../static/js/materialize.min.js"></script>
+  <!-- Aplicação -->
+  <script type="text/javascript" src="../static/controllers/app.js"></script>
+  <script type="text/javascript" src="../static/controllers/controller_cadastro.js"></script>
+  <script type="text/javascript" src="../static/controllers/controller_login.js"></script>
+  <script type="text/javascript" src="../static/controllers/controller_service.js"></script>
 </body>
 
 </html>

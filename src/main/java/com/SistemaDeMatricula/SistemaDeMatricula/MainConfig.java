@@ -3,14 +3,14 @@ package com.SistemaDeMatricula.SistemaDeMatricula;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+//import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MainConfig {
 
-    @Bean
+   /* @Bean
     public BasicDataSource dataSource() throws URISyntaxException {
         URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
@@ -24,5 +24,5 @@ public class MainConfig {
         basicDataSource.setPassword(password);
 
         return basicDataSource;
-    }
+    }*/
 }
