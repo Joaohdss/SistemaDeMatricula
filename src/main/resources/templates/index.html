@@ -1,86 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Pré-matrícula</title>
-  <link th:href="@{/../static/icon/ccc.png}" rel="icon">
-
-  <link rel="stylesheet" th:href="@{/../static/css/materialize}" href="../static/css/materialize.css">
-  <link rel="stylesheet" th:href="@{/../static/css/geral}" href="../static/css/geral.css">
-  <link rel="stylesheet" th:href="@{/../static/css/normalize}" href="../static/css/normalize.css">
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pré Matricula</title>
 </head>
-
-<body ng-app="pre_matricula">
-  <div class="navbar-fixed">
-    <nav>
-      <a class="brand-logo center">Pré-Matrícula</a>
-      <ul class="right hide-on-small-and-up">
-          <li>
-              <a th:href="@{/form_disciplina}" href="form_disciplina.html">Cadastro Disciplinas</a>
-          </li>
-      </ul>
-    </nav>
-  </div>
-  <h3> Login </h3>
-
-  <div ng-controller="LoginCtrl" class="container blocoLogin posicaoBloco">
-    <div class="row">
-      <div class="input-field col s12">
-          <input ng-model="email" id="email" type="email" class="validate">
-          <label for="email">Email Institucional</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-          <input ng-model="senha" id="senha1" type="password">
-          <label for="senha">Senha</label>
-      </div>
-    </div>
-
-    <form action="tipoCadastro">
-      {{tipoCadastro}}
-        <p>
-          <label>
-            <input ng-model="tipoCadastro" name="group1" type="radio" id="aluno" value="aluno" checked />
-            <span for="aluno">Aluno</span>
-          </label>
-        </p>
-        <p>
-          <label>
-            <input ng-model="tipoCadastro" name="group1" id="coordenaodr" type="radio" value="coordenador" />
-            <span for="coordenador">Coordenador</span>
-          </label>
-        </p>
-      </form>
-    <button  ng-click="envio()" class="btn waves-effect waves-light" type="submit" name="action">Login
-      <i class="material-icons right">send</i>
-    </button>
-    <a th:href="@{/form_cadastro.html}" href="form_cadastro.html">
-      <button class="btn waves-effect waves-light">Cadastro
-        <i class="material-icons left">add_circle_outline</i>
-      </button>
-    </a>
-  </div>
-
-  <!-- Angular JS -->
-  <script type="text/javascript" src="../static/js/angular.min.js"></script>
-  <script type="text/javascript" src="../static/js/angular-route.js"></script>
-  <!--JavaScript at end of body for optimized loading-->
-  <script type="text/javascript" src="../static/js/materialize.min.js"></script>
-  <!-- Aplicação -->
-  <script type="text/javascript" src="../static/controllers/app.js"></script>
-  <script type="text/javascript" src="../static/controllers/controller_cadastro.js"></script>
-  <script type="text/javascript" src="../static/controllers/controller_login.js"></script>
-  <script type="text/javascript" src="../static/controllers/controller_service.js"></script>
+<body>
+    <h1>TESTE NO AR: Grupo PSOFT : JOAO,REDIN,GUILHERME DAMIÂO</h1>
 </body>
-
 </html>
