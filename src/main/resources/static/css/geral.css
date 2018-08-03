@@ -1,0 +1,40 @@
+/* Bloco de formularios*/
+
+.blocoFormulario {
+    width: 700px;
+}
+
+.posicaoBloco{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+.blocoLogin {
+    width: 400px;
+    padding: 30px;
+    border-radius: 1cm;
+}
+
+/* Gerais */
+
+body h3 {
+    text-align: center;
+   
+}
+
+body {
+    background-color: rgba(181, 223, 252, 0.603);
+}
+
+/* Barra de navegação */
+
+nav {
+    background-color: rgb(43, 43, 255);
+}
+
+nav ul {
+    margin-left: 10px;
+    position: relative;
+}
